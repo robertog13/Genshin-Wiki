@@ -70,7 +70,7 @@ interface ContextValues {
   doFetchCharacterDetail: (name : string) => Promise<ICharacterDetail>;
   doFetchCharacterList: () => Promise<ICharacterList>;
   doFecthArtifactsList: () => Promise<ICharacterList>;
-  fetchArtifactsDetail: (artifact: string ) => Promise<IArtifactsDetail>;
+  dofetchArtifactsDetail: (artifact: string ) => Promise<IArtifactsDetail>;
   
 }
 
@@ -153,7 +153,7 @@ export const Provider: React.FC<ProviderProps> = ({children}) => {
     return data;
   }
 
-  const fetchArtifactsDetail = async (artifact : string) => {
+  const dofetchArtifactsDetail = async (artifact : string) => {
     const detailEndpoint = `${baseURL}/artifacts/${artifact}`;
     const response = await fetch(detailEndpoint);
     const data = await response.json() as IArtifactsDetail;
@@ -182,7 +182,7 @@ export const Provider: React.FC<ProviderProps> = ({children}) => {
     doFetchCharacterList,
     doFetchCharacterDetail,
     doFecthArtifactsList,
-    fetchArtifactsDetail,
+    dofetchArtifactsDetail,
   }
   return (
     <Context.Provider value={{ contextValues }}>

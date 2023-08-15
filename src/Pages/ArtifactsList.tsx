@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useAppContext } from "../context";
 import Header from "../components/Header";
 import { baseURL } from "../utils";
+import { Link } from "react-router-dom";
 
 
 export const ArtifactsList = () => {
 
   const {contextValues} = useAppContext();
-  const {setIsCharacter, doFecthArtifactsList, isLoading, setIsLoading, artifactsList, setArtifactsList, fetchArtifactsDetail, artifactsDetails, setArtifactsDetails} = contextValues;
+  const { setIsCharacter, doFecthArtifactsList, isLoading, setIsLoading, artifactsList, setArtifactsList } = contextValues;
 
 
   useEffect(() => {
@@ -33,12 +34,6 @@ export const ArtifactsList = () => {
     return capitalizedWords.join(' '); // Junta as palavras com espaço entre elas
   });
 
-  const [isShowing, setIsShowing] = useState(false);
-  const [selectedArt, setSelectedArt] = useState('');
-
-
-  console.log({selectedArt});
-  
   
 
   return(
@@ -52,11 +47,12 @@ export const ArtifactsList = () => {
           <Header title="Artefatos" />
           <h1>Artefatos</h1>
           {filtredArtifacts.map((artifact : string, index: number) => (
-            <div key={index}>
+            <Link key={index} to={`/artifacts/${artifact}`}>
+            
               <img src={`${baseURL}/artifacts/${artifact}/flower-of-life.png`} alt={`${artifact}`} />
               <p>{transformedArray[index]}</p>
-          
-            </div>
+
+            </Link>
           ))}
         </div>
       }
