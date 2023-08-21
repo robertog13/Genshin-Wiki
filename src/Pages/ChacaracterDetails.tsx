@@ -5,7 +5,7 @@ import { baseURL, capitalizeFirstLetter } from "../utils";
 import { useAppContext } from "../context";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
-import { FirstSectionInfo, Galery, GaleryAtifacts, LargeImg, ParagStyled, SecondSection, SecondSectionInfo, SplashArt, ThirdSection, ThirdSectionInfo, Title } from "../style";
+import {  Galery, GaleryAtifacts, ParagStyled, SecondSection, SecondSectionInfo, SplashArt, ThirdSection, ThirdSectionInfo, Title } from "../style";
 import { Footer } from "../components/Footer";
 
 const CharacterDetails : React.FC = () => {

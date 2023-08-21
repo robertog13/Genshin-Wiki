@@ -1,7 +1,5 @@
-
-import { Link } from "react-router-dom";
-import { FooterSection, FooterSubSection, HeaderButton, LinkButton, LinkStyled, ParagFooter, Title } from "../../style"
-import { IoLogoGithub,IoLogoLinkedin ,IoMdContact} from "react-icons/io";
+import { FooterSection, FooterSubSection, HeaderButton,  LinkStyled, ParagFooter, Title } from "../../style"
+import { IoLogoGithub,IoLogoLinkedin } from "react-icons/io";
 
 
 export const Footer = () => {

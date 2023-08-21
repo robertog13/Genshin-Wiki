@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppContext } from "../context";
 import Header from "../components/Header";
 import { baseURL } from "../utils";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
-import { CardSection, ParagStyled, SplashArt, Title } from "../style";
+import { CardSection, SplashArt, Title } from "../style";
 import { Footer } from "../components/Footer";
 
 
@@ -30,12 +30,6 @@ export const ArtifactsList = () => {
 
 
   const filtredArtifacts: string[]= artifactsList.filter((artifact) => !["resolution-of-sojourner", "prayers-to-the-firmament", "prayers-to-springtime", "prayers-for-wisdom", "prayers-for-illumination", "prayers-for-destiny", "glacier-and-snowfield"].includes(artifact))
-
-  const transformedArray = filtredArtifacts.map(item => {
-    const words = item.split('-'); // Divide o item em palavras separadas pelo hífen
-    const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1)); // Capitaliza a primeira letra de cada palavra
-    return capitalizedWords.join(' '); // Junta as palavras com espaço entre elas
-  });
 
   
 
