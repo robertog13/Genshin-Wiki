@@ -3,6 +3,8 @@ import { useAppContext } from "../context";
 import Header from "../components/Header";
 import { baseURL } from "../utils";
 import { Link } from "react-router-dom";
+import Loading from "../components/Loading";
+import { CardSection, ParagStyled, SplashArt, Title } from "../style";
 
 
 export const ArtifactsList = () => {
@@ -40,20 +42,20 @@ export const ArtifactsList = () => {
     <div>
       {isLoading ?
         <div>
-          <p>Carregando ...</p>
+          <Loading />
         </div> 
       :
         <div>
           <Header title="Artefatos" />
-          <h1>Artefatos</h1>
-          {filtredArtifacts.map((artifact : string, index: number) => (
-            <Link key={index} to={`/artifacts/${artifact}`}>
-            
-              <img src={`${baseURL}/artifacts/${artifact}/flower-of-life.png`} alt={`${artifact}`} />
-              <p>{transformedArray[index]}</p>
+          <CardSection>
+            <Title size="50px" color="green300">Escolha um Artefato</Title>
+            {filtredArtifacts.map((artifact : string, index: number) => (
+              <Link key={index} to={`/artifacts/${artifact}`}>
+                <SplashArt isClick src={`${baseURL}/artifacts/${artifact}/flower-of-life.png`} alt={`${artifact}`} />
+              </Link>
+            ))}
 
-            </Link>
-          ))}
+          </CardSection>
         </div>
       }
     </div>

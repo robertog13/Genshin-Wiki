@@ -1,6 +1,7 @@
 import { useAppContext } from "../../context";
+import { HeaderButton, Icon, StyledHeader, Title } from "../../style";
 import { IPropsHeader, baseURL } from "../../utils";
-import "./style.css"
+import { HiHome, HiUsers, HiOutlineSparkles } from "react-icons/hi";
 
 
 function Header(props : IPropsHeader) {
@@ -12,17 +13,25 @@ function Header(props : IPropsHeader) {
 
 
   return (
-    <div className="Header">
+    <StyledHeader>
       {isCharacter ?
-        <img src={`${baseURL}/elements/${props.element}/icon.png`} alt="" />
+        <Icon src={`${baseURL}/elements/${props.element}/icon.png`} alt="" />
         :
-        <img src={`${baseURL}/nations/mondstadt/icon.png`} alt="Mondstadt Icon" />
+        <Icon src={`${baseURL}/nations/mondstadt/icon.png`} alt="Mondstadt Icon" />
       }
-      <h1>{props.title}</h1>
+      <Title color="gray100" size="40px">{props.title}</Title>
       <div>
-        buttons
+        <HeaderButton to="/">
+          <HiHome size={27}/>
+        </HeaderButton>
+        <HeaderButton to="/character">
+          <HiUsers size={27}/>
+        </HeaderButton>
+        <HeaderButton to="/artifacts">
+          <HiOutlineSparkles size={27}/>
+        </HeaderButton>
       </div>
-    </div>
+   </StyledHeader>
   );
 }
 
