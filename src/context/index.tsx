@@ -2,9 +2,6 @@ import React, { ReactNode, useContext, useState } from "react";
 import { baseURL } from "../utils";
 
 
-export interface ICharacterList {
-  [index: number]: string;
-}
 
 export interface ISkillTalents {
   name: string;
@@ -56,20 +53,20 @@ export interface IArtifactsDetail {
 interface ContextValues {
   characterDetail: ICharacterDetail ;
   setCharacterDetail: React.Dispatch<React.SetStateAction<ICharacterDetail>>,
-  characterList: string[];
-  setCharacterList: React.Dispatch<React.SetStateAction<string[]>>;
+  characterList: Array<string>[];
+  setCharacterList: React.Dispatch<React.SetStateAction<Array<string>>>;
   isCharacter: boolean,
   setIsCharacter: React.Dispatch<React.SetStateAction<boolean>>;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  artifactsList: string[],
-  setArtifactsList: React.Dispatch<React.SetStateAction<string[]>>,
+  artifactsList: Array<string>,
+  setArtifactsList: React.Dispatch<React.SetStateAction<Array<string>>>,
   artifactsDetails: IArtifactsDetail;
   setArtifactsDetails: React.Dispatch<React.SetStateAction<IArtifactsDetail>>
   
   doFetchCharacterDetail: (name : string) => Promise<ICharacterDetail>;
-  doFetchCharacterList: () => Promise<ICharacterList>;
-  doFecthArtifactsList: () => Promise<ICharacterList>;
+  doFetchCharacterList: () => Promise<Array<string>>;
+  doFecthArtifactsList: () => Promise<Array<string>>;
   dofetchArtifactsDetail: (artifact: string ) => Promise<IArtifactsDetail>;
   
 }
@@ -102,7 +99,7 @@ export const Provider: React.FC<ProviderProps> = ({children}) => {
 
   //setStates
   const [isLoading, setIsLoading] = useState(true);
-  const [characterList, setCharacterList] = useState<string[]>([]);
+  const [characterList, setCharacterList] = useState<Array<string>>([]);
   const [characterDetail, setCharacterDetail] = useState<ICharacterDetail>({
     name: '',
     title: '',
@@ -121,7 +118,7 @@ export const Provider: React.FC<ProviderProps> = ({children}) => {
     weapon_type: '', 
   });
   const [isCharacter, setIsCharacter] = useState(false);
-  const [artifactsList, setArtifactsList] = useState<string[]>([]);
+  const [artifactsList, setArtifactsList] = useState<Array<string>>([]);
   const [artifactsDetails, setArtifactsDetails] = useState<IArtifactsDetail>({
     max_rarity: 0,
     "2-piece_bonus": '',
@@ -134,7 +131,7 @@ export const Provider: React.FC<ProviderProps> = ({children}) => {
   const doFetchCharacterList = async () => {
     const charactersEndpoint = `${baseURL}/characters`;
     const response = await fetch(charactersEndpoint);
-    const data  = await response.json() as ICharacterList;
+    const data  = await response.json() as Array<string>;
     return data;
   }
 

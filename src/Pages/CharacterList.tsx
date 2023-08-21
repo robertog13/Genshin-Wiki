@@ -26,7 +26,7 @@ export const CharacterList : React.FC = () => {
   }, []);
 
 
-  const filtredCharacterList = characterList.filter((character) => !["traveler-anemo", "traveler-dendro", "traveler-electro", "traveler-geo"].includes(character))
+  const filtredCharacterList = characterList.filter((character: string) => !["traveler-anemo", "traveler-dendro", "traveler-electro", "traveler-geo"].includes(character))
   
 
   return (
