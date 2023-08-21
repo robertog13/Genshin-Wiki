@@ -5,6 +5,7 @@ import { baseURL } from "../utils";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import { CardSection, ParagStyled, SplashArt, Title } from "../style";
+import { Footer } from "../components/Footer";
 
 
 export const ArtifactsList = () => {
@@ -56,6 +57,7 @@ export const ArtifactsList = () => {
             ))}
 
           </CardSection>
+          <Footer />
         </div>
       }
     </div>
