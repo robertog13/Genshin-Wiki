@@ -9,26 +9,15 @@ import { Footer } from "../components/Footer";
 export const CharacterList: React.FC = () => {
   //usando o hook personalizado do useAppContext
   const { contextValues } = useAppContext();
-  const {
-    doFetchCharacterList,
-    characterList,
-    setCharacterList,
-    setIsCharacter,
-    setIsLoading,
-    isLoading,
-  } = contextValues;
+  const { doFetchCharacterList, characterList, setIsCharacter, isLoading } =
+    contextValues;
 
   useEffect(() => {
-    const fetchCharacterList = async () => {
-      setIsLoading(true);
-      const characaterData = await doFetchCharacterList();
-      setCharacterList(characaterData);
-      setIsLoading(false);
-    };
-    fetchCharacterList();
+    doFetchCharacterList();
     setIsCharacter(false);
   }, []);
 
+  // @bruno coloquei o array em uma variavel pra deixar o filter mais legivel
   const removeCharacter = [
     "traveler-anemo",
     "traveler-dendro",
